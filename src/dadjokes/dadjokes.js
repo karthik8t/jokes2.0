@@ -16,9 +16,9 @@ const DadJokes = () => {
         // });
 
         // or 
-        console.log("hi");
+        // console.log("hi");
         const res = await axios.get(`${baseurl}`,{ headers: { "Accept": "application/json" } });
-        console.log(res);
+        // console.log(res);
         setFacts(facts.concat(res.data.joke));
     }
     const Items = styled.h1`
@@ -46,6 +46,11 @@ const DadJokes = () => {
     const Container= styled.div`
     // margin-x:auto;
     text-align:center;
+    // position:fixed;
+    // bottom:0px;
+    // width:100%;
+    // background-color: rgba(0,50, 190, 0.2);
+    margin:1rem auto;
     `; 
 
     const Requestbtn = styled.button`
@@ -60,25 +65,30 @@ const DadJokes = () => {
       0 4px 4px hsl(0deg 0% 0% / 0.1),
       0 8px 8px hsl(0deg 0% 0% / 0.1),
       0 16px 16px hsl(0deg 0% 0% / 0.1);
-     &:hover{
+     &:active{
         box-shadow:
       0 1px 1px hsl(0deg 0% 0% / 0.1),
       0 2px 2px hsl(0deg 0% 0% / 0.1),
       0 4px 4px hsl(0deg 0% 0% / 0.1);
     }
+
 `;
 
     return (
         <div>
             <Container>
-                <h1>Dad Jokes v1.0</h1>
-                <Requestbtn onClick={fetchFact} >get jokes</Requestbtn>
-                {/* <Requestbtn onClick={fetchFact}>
+                <div>
+                    <h1>Dad Jokes v2.0</h1>
+                    <Requestbtn onClick={fetchFact} >get jokes</Requestbtn>
+                </div>
+                {facts.map((v,i)=>{
+                    return(<Items key={i}>{facts[facts.length - 1 - i]}</Items>);
+                })}
+                 {/* <Requestbtn onClick={fetchFact}>
                     hello
                 </Requestbtn> */}
-                {facts.map((v,i)=>{
-                    return(<Items key={i}>{v}</Items>);
-                })}
+            
+                
             </Container>
             
         </div>
